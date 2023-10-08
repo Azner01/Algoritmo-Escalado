@@ -4,3 +4,11 @@
 void inicio() {
 
 }
+
+void pantalla() {
+
+}
+
+main() {
+
+}
