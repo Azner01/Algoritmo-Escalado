@@ -1,5 +1,5 @@
 #include <Windows.h>
-#include <C:\Users\azner\OneDrive\Documentos\GitHub\Algoritmo-Escalado\GLUT\glut.h>
+
 
 int cx0 = 25;
 int cx1 = -25;
@@ -28,6 +28,14 @@ void Functecla (int key, int x, int y){
         cy0 += 10;
         cy1 -= 10;
     }
+    if (key == GLUT_KEY_DOWN)
+    {
+        cx0 -= 10;
+        cx1 += 10;
+        cy0 -= 10;
+        cy1 += 10;
+    }
+    glutPostRedisplay();
 }
 
 main(int argc, char *argv[]) {
