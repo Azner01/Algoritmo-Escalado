@@ -1,16 +1,33 @@
 #include <Windows.h>
 #include <C:\Users\azner\OneDrive\Documentos\GitHub\Algoritmo-Escalado\GLUT\glut.h>
 
+int cx0 = 25;
+int cx1 = -25;
+int cy0 = 25;
+int cy1 = -25;
 void inicio() {
     glMatrixMode(GL_PROJECTION);//sirve para el uso de la pantalla
-    gluOrtho2D(-100,100,-100,100);//2 primeros inicio y fin de las x y la segunda inicio de la y y fin
+    gluOrtho2D(-50,50,-50,50);//2 primeros inicio y fin de las x y la segunda inicio de la y y fin
     glClearColor(0.0,0.0,1.0,0.0);//Colores RGB
 }
 
 void pantalla() {
     glClear(GL_COLOR_BUFFER_BIT);
 	//inserte su codigo aqui
-    glFlush();
+    glBegin(GL_QUADS);
+    glColor3f(1.0,0.0,0.0);
+    glVertex2i(cx0, cy0); glVertex2i(cx1, cy0);
+    glVertex2i(cx1, cy1); glVertex2i(cx0, cy1);
+    glEnd();
+}
+
+void Functecla (int key, int x, int y){
+    if(key==GLUT_KEY_UP){
+        cx0 += 10;
+        cx1 -= 10;
+        cy0 += 10;
+        cy1 -= 10;
+    }
 }
 
 main(int argc, char *argv[]) {
@@ -22,7 +39,7 @@ main(int argc, char *argv[]) {
     glutCreateWindow("Sesgado");
     inicio();
     glutDisplayFunc(pantalla);
-
+    glutSpecialFunc(Functecla);
     glutMainLoop();//se repite y no se cierra
 
     return EXIT_SUCCESS;
